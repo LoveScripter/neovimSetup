@@ -1,14 +1,44 @@
+-- ~/.config/nvim/lua/plugins/neo-tree.lua
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  opts = function(_, opts)
-    -- Ensure event_handlers exists
-    opts.event_handlers = opts.event_handlers or {}
-    -- Append the file_opened event handler
-    table.insert(opts.event_handlers, {
-      event = "file_opened",
-      handler = function()
-        require("neo-tree.command").execute({ action = "close" })
-      end,
-    })
-  end,
+  -- -- Disable default nvim-tree from LazyVim
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   enabled = false,
+  -- },
+  --
+  -- -- Add neo-tree with custom options
+  -- {
+  --   "nvim-neo-tree/neo-tree.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     "nvim-tree/nvim-web-devicons", -- optional icons
+  --     "MunifTanjim/nui.nvim",
+  --   },
+  --   cmd = "Neotree",
+  --   keys = {
+  --     { "<leader>fe", "<cmd>Neotree toggle<CR>", desc = "Toggle Neo-tree" },
+  --   },
+  --   opts = function(_, opts)
+  --     opts.event_handlers = opts.event_handlers or {}
+  --     table.insert(opts.event_handlers, {
+  --       event = "file_opened",
+  --       handler = function()
+  --         require("neo-tree.command").execute({ action = "close" })
+  --       end,
+  --     })
+  --
+  --     -- Set filtering options here
+  --     opts.filesystem = opts.filesystem or {}
+  --     opts.filesystem.filtered_items = {
+  --       visible = true,
+  --       hide_dotfiles = false,
+  --       hide_gitignored = false,
+  --       hide_by_name = {
+  --         -- Remove "node_modules" if present
+  --       },
+  --     }
+  --
+  --     return opts
+  --   end,
+  -- },
 }
